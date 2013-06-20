@@ -9,6 +9,6 @@ http://nameless-anchorage-5105.herokuapp.com
 
 Creadentials:
 
-"Content Provider: wilma_douglas/password"
-"Content Provider: micheal.kuhic/password"
-"Admin: ron/password"
+Content Provider: wilma_douglas/password
+Content Provider: micheal.kuhic/password
+Admin: ron/password
