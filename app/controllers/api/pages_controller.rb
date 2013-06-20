@@ -4,7 +4,7 @@ module Api
     before_filter :find_page, only: [:publish, :total_words]
 
     def index
-      respond_with Page.all
+      respond_with current_user.pages
     end
 
     def show
@@ -20,7 +20,8 @@ module Api
     end
 
     def destroy
-      respond_with Page.destroy(params[:id])
+      Page.destroy(params[:id])
+      respond_with({ status: :ok })
     end
 
     def published
@@ -33,7 +34,7 @@ module Api
 
     def publish
       @page.publish!
-      respond_with({ status: :ok })
+      respond_with({ status: :ok, published_on: @page.published_on })
     end
 
     def total_words

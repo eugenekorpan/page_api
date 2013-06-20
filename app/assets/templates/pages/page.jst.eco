@@ -1,0 +1,20 @@
+<td> <%= @entry.get('title') %> </td>
+<td> <%= @entry.get('status') %> </td>
+<td class='published_on'> <%= @entry.get('published_on') %> </td>
+<td> <%= @entry.get('created_at') %> </td>
+<td> <%= @entry.get('total_words') %> </td>
+<td> 
+  <a href="javascript:;" class='edit'> edit </a>
+</td>
+<td>
+  <a href="javascript:;" class='delete'> delete </a>
+</td>
+
+<td>
+  <% if @entry.published(): %>
+    already published
+  <% else: %>
+    <a href="javascript:;" class='publish'> mark as published </a>
+  <% end %>
+</td>
+

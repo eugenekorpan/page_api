@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+span.error { color: red; }
+span.notice { color: green; }
+
+div.menu_item { float: right; }

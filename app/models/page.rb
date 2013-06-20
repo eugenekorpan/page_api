@@ -20,4 +20,12 @@ class Page < ActiveRecord::Base
   def total_words
     title.split.size + content.split.size
   end
+
+  def status
+    published? ? 'published' : 'unpublished'
+  end
+
+  def as_json(options={})
+    super.as_json(options).merge({ status: status, total_words: total_words })
+  end
 end

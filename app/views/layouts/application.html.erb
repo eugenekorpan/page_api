@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>PageApi</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>PageApi</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-<%= yield %>
+  </head>
+  <body>
 
-</body>
+    <% if authorized? %>
+
+      <div class='menu_item'>
+        <%= current_user.username %> | <%= link_to 'Log Out', sessions_path, method: :delete %>
+      </div>
+    <% end %>
+
+    <span class='error'><%= flash[:error] %></span>
+    <span class='notice'><%= flash[:notice] %></span>
+
+    <%= yield %>
+
+    <div id='dialog' title='Edit Page'></div>
+
+  </body>
 </html>

@@ -18,14 +18,14 @@ describe Api::PagesController do
       end
     end
 
-    context 'success' do
-      let(:user) { FactoryGirl.create(:user) }
+    #context 'success' do
+      #let(:user) { FactoryGirl.create(:user) }
 
-      it 'should return for valid user' do
-        get :index, username: user.username, password: user.password
-        response.should be_success
-      end
-    end
+      #it 'should return for valid user' do
+        #get :index, username: user.username, password: user.password
+        #response.should be_success
+      #end
+    #end
   end
 
   describe 'http' do

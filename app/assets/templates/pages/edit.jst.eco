@@ -1,0 +1,14 @@
+<form id='edit_form' action='/api/pages/<%= @entry.get('id') %>' method='POST'>
+  <input type='hidden' name='_method' value='put'>
+  Title:
+  <input type='text' value='<%= @entry.get('title') %>' name='page[title]'/>
+  <br/>
+  <br/>
+  Content:
+  <textarea name='page[content]' value='<%= @entry.get('content')%>' style='width: 260px;'>
+  </textarea>
+
+  <br/>
+  <br/>
+  <input type='submit' value='Save'/>
+</form>

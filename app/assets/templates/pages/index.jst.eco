@@ -1,0 +1,13 @@
+<table border=1 cellspacing=0 cellpadding=3>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>Date Published</th>
+      <th>Date Created</th>
+      <th>Total Words</th>
+      <th colspan=3> Options </th>
+    </tr>
+   </thead>
+   <tbody id='pages'></tbody>
+</table>

@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   CONTENT_PROVIDER = :content_provider
 
   validates :username, :password, :role, presence: true
+
+  has_many :pages
 end
