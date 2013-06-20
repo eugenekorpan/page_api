@@ -4,7 +4,8 @@ module Api
     before_filter :find_page, only: [:publish, :total_words]
 
     def index
-      respond_with current_user.pages
+      pages = current_user.admin? ? Page.desc : current_user.pages.desc
+      respond_with pages
     end
 
     def show
@@ -12,11 +13,11 @@ module Api
     end
 
     def create
-      respond_with Page.create(params[:entry])
+      respond_with current_user.pages.create(params[:page]), location: api_pages_url
     end
 
     def update
-      respond_with Page.update(params[:id], params[:entry])
+      respond_with Page.update(params[:id], params[:page])
     end
 
     def destroy

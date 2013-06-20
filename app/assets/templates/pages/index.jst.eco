@@ -12,10 +12,9 @@
    <tbody id='pages'></tbody>
 </table>
 
-
 <div id='action_buttons'>
   <input type='button' value='Unpublished' id='refresh_unpublished'/>
   <input type='button' value='Published' id='refresh_published'/>
   <input type='button' value='Refresh' id='refresh'/>
-  <input type='button' value='New Page' id='new_pate'/>
+  <input type='button' value='New Page' id='new_page'/>
 </div>

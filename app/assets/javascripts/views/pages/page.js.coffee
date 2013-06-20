@@ -7,7 +7,7 @@ class PageApi.Views.Page extends Backbone.View
     @model.on('change', @update, this)
 
   update: ->
-    $(@el).html(@template(entry: @model))
+    $(@el).html(@template(entry: @model, admin: window.admin))
 
   events:
     'click .edit': 'showEditPopup',
@@ -15,14 +15,26 @@ class PageApi.Views.Page extends Backbone.View
     'click .publish': 'publish'
 
   render: ->
-    $(@el).append(@template(entry: @model))
+    $(@el).append(@template({entry: @model, admin: window.admin}))
     this
 
   showEditPopup: ->
-    editView = new PageApi.Views.EditPage(model: @model)
+    _model = @model
+    editView = new PageApi.Views.EditPage(model: _model)
     $('#dialog').html(editView.render().el)
-    $('#dialog').dialog({ modal: true })
-    editView.delegateEvents()
+    $('#dialog').dialog
+      modal: true,
+      title: 'Edit page',
+      buttons:
+        'Save': ->
+          _model.set(editView.attributes())
+          _model.save()
+          collection = new PageApi.Collections.Pages()
+          collection.fetch success: =>
+            new PageApi.Views.PagesIndex(collection: collection)
+          $( this ).dialog "close",
+        'Cancel': ->
+          $( this ).dialog( "close" )
 
   publish: ->
     @model.publish()

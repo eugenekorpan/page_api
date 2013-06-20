@@ -4,16 +4,25 @@
 <td> <%= @entry.get('created_at') %> </td>
 <td> <%= @entry.get('total_words') %> </td>
 
-<% if @entry.published(): %>
-  <td colspan=3><i>not available</i></td>
-<% else: %>
+<% if @admin: %>
   <td>
     <a href="javascript:;" class='edit'> Edit </a>
   </td>
   <td>
     <a href="javascript:;" class='delete'> Delete </a>
   </td>
-   <td>
-      <a href="javascript:;" class='publish'> Mark as Published </a>
-   </td>
+  <% if !@entry.published(): %>
+     <td>
+        <a href="javascript:;" class='publish'> Mark as Published </a>
+     </td>
+  <% end %>
+<% else: %>
+  <% if !@entry.published(): %>
+    <td>
+      <a href="javascript:;" class='edit'> Edit </a>
+    </td>
+    <td>
+      <a href="javascript:;" class='delete'> Delete </a>
+    </td>
+  <% end %>
 <% end %>

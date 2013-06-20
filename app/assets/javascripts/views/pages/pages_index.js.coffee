@@ -5,7 +5,8 @@ class PageApi.Views.PagesIndex extends Backbone.View
   events:
     'click #refresh_unpublished' : 'showUnpublished',
     'click #refresh_published' : 'showPublished',
-    'click #refresh' : 'refresh'
+    'click #refresh' : 'refresh',
+    'click #new_page' : 'showNewPageForm'
 
   filterByPublishedStatus: (url) =>
     collection = new PageApi.Collections.Pages()
@@ -18,8 +19,25 @@ class PageApi.Views.PagesIndex extends Backbone.View
   showPublished: ->
     @filterByPublishedStatus('/api/pages/published')
 
-  refresh: ->
+  refresh: =>
     @filterByPublishedStatus('/api/pages')
+
+  showNewPageForm: =>
+    _this = @
+    model = new PageApi.Models.Page()
+    view = new PageApi.Views.EditPage(model: model)
+    $('#dialog').html(view.render().el)
+    $('#dialog').dialog
+      modal: true,
+      title: 'Create new page',
+      buttons:
+        'Save': ->
+          collection = new PageApi.Collections.Pages()
+          collection.create({ page: view.attributes() })
+          _this.refresh()
+          $(this).dialog "close",
+        'Cancel': ->
+          $(this).dialog("close")
 
   initialize: ->
     @render()

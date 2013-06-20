@@ -4,10 +4,5 @@
   <br/>
   <br/>
   Content:
-  <textarea name='content' value='<%= @entry.get('content')%>' style='width: 260px;'>
-  </textarea>
-
-  <br/>
-  <br/>
-  <input type='submit' value='Save'/>
+  <textarea name='content' style='width: 260px;'><%= @entry.get('content')%></textarea>
 </form>
