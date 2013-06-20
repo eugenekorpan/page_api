@@ -1,4 +1,7 @@
-# heroku
+{<img src="https://travis-ci.org/eugenekorpan/page_api.png" alt="Build Status" />}[https://travis-ci.org/eugenekorpan/page_api]
+
+
+= heroku
 
 http://nameless-anchorage-5105.herokuapp.com
 
