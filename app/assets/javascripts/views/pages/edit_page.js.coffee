@@ -2,9 +2,9 @@ class PageApi.Views.EditPage extends Backbone.View
   template: JST['pages/edit']
 
   event:
-    'submit #edit_form': 'updatePage'
+    "submit form#edit_form": 'updatePage'
 
-  updatePage: (event) =>
+  updatePage: (event) ->
     event.preventDefault()
 
   render: ->

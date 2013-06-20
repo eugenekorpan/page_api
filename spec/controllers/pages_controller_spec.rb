@@ -46,8 +46,8 @@ describe Api::PagesController do
 
     context '.published' do
       it 'should return all published pages' do
-        3.times { FactoryGirl.create(:published_page) }
-        @expected = Page.published.desc.to_json
+        3.times { FactoryGirl.create(:published_page, user: user) }
+        @expected = user.pages.published.desc.to_json
 
         get :published
 
@@ -57,8 +57,8 @@ describe Api::PagesController do
 
     context '.unpublished' do
       it 'should return all published pages' do
-        2.times { FactoryGirl.create(:unpublished_page) }
-        @expected = Page.unpublished.desc.to_json
+        2.times { FactoryGirl.create(:unpublished_page, user: user) }
+        @expected = user.pages.unpublished.desc.to_json
 
         get :unpublished
 

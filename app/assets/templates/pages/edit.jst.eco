@@ -1,11 +1,10 @@
-<form id='edit_form' action='/api/pages/<%= @entry.get('id') %>' method='POST'>
-  <input type='hidden' name='_method' value='put'>
+<form id='edit_form'>
   Title:
-  <input type='text' value='<%= @entry.get('title') %>' name='page[title]'/>
+  <input type='text' value='<%= @entry.get('title') %>' name='title'/>
   <br/>
   <br/>
   Content:
-  <textarea name='page[content]' value='<%= @entry.get('content')%>' style='width: 260px;'>
+  <textarea name='content' value='<%= @entry.get('content')%>' style='width: 260px;'>
   </textarea>
 
   <br/>

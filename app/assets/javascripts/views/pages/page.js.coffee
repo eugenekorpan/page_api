@@ -20,9 +20,9 @@ class PageApi.Views.Page extends Backbone.View
 
   showEditPopup: ->
     editView = new PageApi.Views.EditPage(model: @model)
-    console.log(editView.render())
     $('#dialog').html(editView.render().el)
-    $('#dialog').dialog({ modal: true, })
+    $('#dialog').dialog({ modal: true })
+    editView.delegateEvents()
 
   publish: ->
     @model.publish()

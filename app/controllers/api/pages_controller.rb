@@ -25,11 +25,11 @@ module Api
     end
 
     def published
-      respond_with Page.published.desc
+      respond_with current_user.pages.published.desc
     end
 
     def unpublished
-      respond_with Page.unpublished.desc
+      respond_with current_user.pages.unpublished.desc
     end
 
     def publish

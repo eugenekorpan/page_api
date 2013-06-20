@@ -2,6 +2,25 @@ class PageApi.Views.PagesIndex extends Backbone.View
 
   template: JST['pages/index']
 
+  events:
+    'click #refresh_unpublished' : 'showUnpublished',
+    'click #refresh_published' : 'showPublished',
+    'click #refresh' : 'refresh'
+
+  filterByPublishedStatus: (url) =>
+    collection = new PageApi.Collections.Pages()
+    collection.fetch url: url, success: =>
+      new PageApi.Views.PagesIndex(collection: collection)
+
+  showUnpublished: =>
+    @filterByPublishedStatus('/api/pages/unpublished')
+
+  showPublished: ->
+    @filterByPublishedStatus('/api/pages/published')
+
+  refresh: ->
+    @filterByPublishedStatus('/api/pages')
+
   initialize: ->
     @render()
 
