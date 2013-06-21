@@ -1,0 +1,5 @@
+<p><b>Title</b>: <%= @entry.get('title') %></p>
+<p><b>Content</b>: <%= @entry.get('content') %></p>
+<p><b>Status</b>: <%= @entry.get('status') %></p>
+<p><b>Created At</b>: <%= @entry.get('created_at') %></p>
+<p><b>Total Words</b>: <%= @entry.get('total_words') %></p>

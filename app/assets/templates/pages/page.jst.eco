@@ -1,4 +1,8 @@
-<td> <%= @entry.get('title') %> </td>
+<td>
+  <a class='title' href='javascript:;'>
+    <%= @entry.get('title') %>
+  </a>
+</td>
 <td> <%= @entry.get('status') %> </td>
 <td class='published_on'> <%= @entry.get('published_on') %> </td>
 <td> <%= @entry.get('created_at') %> </td>

@@ -12,7 +12,9 @@ class PageApi.Views.Page extends Backbone.View
   events:
     'click .edit': 'showEditPopup',
     'click .delete': 'delete',
-    'click .publish': 'publish'
+    'click .publish': 'publish',
+    'click .title': 'showPage'
+
 
   render: ->
     $(@el).append(@template({entry: @model, admin: window.admin}))
@@ -32,9 +34,9 @@ class PageApi.Views.Page extends Backbone.View
           collection = new PageApi.Collections.Pages()
           collection.fetch success: =>
             new PageApi.Views.PagesIndex(collection: collection)
-          $( this ).dialog "close",
+          $(this).dialog "close",
         'Cancel': ->
-          $( this ).dialog( "close" )
+          $(this).dialog( "close" )
 
   publish: ->
     @model.publish()
@@ -43,3 +45,13 @@ class PageApi.Views.Page extends Backbone.View
     if confirm "Are you sure?"
       @model.destroy success: =>
         $(@el).remove()
+
+  showPage: ->
+    showView = new PageApi.Views.ShowPage(model: @model)
+    $('#dialog').html(showView.render().el)
+    $('#dialog').dialog
+      modal: true,
+      title: 'Page Details',
+      buttons:
+        'Ok': ->
+          $(this).dialog "close"
