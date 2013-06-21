@@ -1,11 +1,11 @@
 module Api
   class PagesController < ApplicationController
-    respond_to :json
+    respond_to :json, :xml
     before_filter :find_page, only: [:publish, :total_words]
+    before_filter :fetch_pages, only: [:index, :published, :unpublished]
 
     def index
-      pages = current_user.admin? ? Page.desc : current_user.pages.desc
-      respond_with pages
+      respond_with @pages
     end
 
     def show
@@ -26,11 +26,11 @@ module Api
     end
 
     def published
-      respond_with current_user.pages.published.desc
+      respond_with @pages.published.desc
     end
 
     def unpublished
-      respond_with current_user.pages.unpublished.desc
+      respond_with @pages.unpublished.desc
     end
 
     def publish
@@ -46,6 +46,10 @@ module Api
 
     def find_page
       @page = Page.find(params[:id])
+    end
+
+    def fetch_pages
+      @pages = current_user.admin? ? Page.desc : current_user.pages.desc
     end
 
   end
