@@ -3,6 +3,8 @@
 {<img src="https://travis-ci.org/eugenekorpan/page_api.png" alt="Build Status" />}[https://travis-ci.org/eugenekorpan/page_api]
 
 
+Classic ToDo list with Backbone.js
+
 = heroku
 
 http://nameless-anchorage-5105.herokuapp.com
